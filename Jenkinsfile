@@ -31,7 +31,7 @@ node {
     
 
              stage('Authorize DevHub') {
-                rc = command  "\"${toolbelt}\" force:auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile ${SERVERKEY}"
+                rc = command  "\"${toolbelt}\" force:auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile ${SERVERKEY} --setdefaultdevhubusername --setalias HubOrg"
                 if (rc != 0) {
                     error 'Salesforce org authorization failed.'
                 }
@@ -51,20 +51,6 @@ node {
                     error 'Salesforce Logout  failed.'
                 }
             }
-
-
-
-            
-
-
-
-
-
-
-
-
-
-
 
 }
 
